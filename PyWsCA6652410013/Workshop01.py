@@ -1,19 +1,29 @@
-def sen():
-    sentence = input("Enter sentence:")
 
-    words = sentence.split()
+def analyzesentence(sentence):
+    
+    total_words = len(sentence.split())
 
-    numword = len(words)
+   
+    all_words = sentence.split()
 
-    numdulicates = 0 
-    set_word = set(words)
-    for words in set_word :
-     numdulicates += words.count(words)-1
+  
+    duplicates = {}
+    for word in all_words:
+        if word in duplicates:
+            duplicates[word] += 1
+        else:
+            duplicates[word] = 1
 
-    print("the sentece contains {} word".format(numword))
-    print("the are {} dulicates word the word are".format(numdulicates))
-    for words in set_word :
-            print(" ",words,words.count(words))
 
-if __name__ == "__sen__":
-    sen()
+    print(f"ประโยคนั้นประกอบด้วยคำทั้งหมด {total_words} คำ")
+    print(f"มีคำที่ซ้ำกัน {len(duplicates)} คำ")
+    print("คำที่ซ้ำกันคือ:")
+    for word, count in duplicates.items():
+        print(f"- '{word}' ซ้ำกัน {count} ครั้ง")
+
+if __name__ == "__main__":
+    
+    usersentence = input("กรุณาป้อนประโยคภาษาอังกฤษ: ")
+
+    
+    analyzesentence(usersentence)
